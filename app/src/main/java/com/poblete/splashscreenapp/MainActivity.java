@@ -40,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-
+                // arreglo de la cantidad de animaciones que hará .
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View, String>(logoImageView, "logoImageTransition");
                 pairs[1]  = new Pair<View, String>(DevAndMasterTxt, "textTransition");
 
-                //verificar la version de librerías
+                //verificar la version. buscada en internet
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
                     startActivity(intent, options.toBundle());
