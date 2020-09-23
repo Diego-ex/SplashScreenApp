@@ -91,12 +91,12 @@
             android:layout_height="wrap_content"
             android:text="INICIO"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="20dp"
             android:transitionName="btnRegistroTrans"/>
 
         <TextView
             android:id="@+id/nuevoUsuario"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="true"
@@ -107,7 +107,7 @@
             android:textColor="@android:color/darker_gray"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:transitionName="newUserTrans" />
+            android:transitionName="newUserTrans"/>
     </LinearLayout>
 
 </LinearLayout>

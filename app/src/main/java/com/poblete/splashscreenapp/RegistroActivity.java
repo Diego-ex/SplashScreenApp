@@ -64,13 +64,7 @@ public class RegistroActivity extends AppCompatActivity {
         pairs[6] = new Pair<View, String>(nuevoUsuario, "newUserTrans");
 
         //verificar la version. buscada en internet
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegistroActivity.this, pairs);
-            startActivity(intent, options.toBundle());
-        }else{
             startActivity(intent);
-            finish();
-        }
 
     }
 }
