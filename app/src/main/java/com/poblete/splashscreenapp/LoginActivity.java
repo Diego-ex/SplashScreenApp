@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 //verificar la version. buscada en internet
 
                     startActivity(intent);
+                    finish();
             }
         });
     }

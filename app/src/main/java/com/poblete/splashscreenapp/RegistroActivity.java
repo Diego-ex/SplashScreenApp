@@ -65,6 +65,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         //verificar la version. buscada en internet
             startActivity(intent);
+            finish();
 
     }
 }
