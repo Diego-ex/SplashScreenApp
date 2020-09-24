@@ -15,6 +15,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -39,19 +42,28 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                // arreglo de la cantidad de animaciones que hará .
-                Pair[] pairs = new Pair[2];
-                pairs[0] = new Pair<View, String>(logoImageView, "logoImageTransition");
-                pairs[1]  = new Pair<View, String>(DevAndMasterTxt, "textTransition");
-
-                //verificar la version. buscada en internet
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
-                    startActivity(intent, options.toBundle());
-                }else{
+                //Verificación de usuario al iniciar la aplicación
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    Intent intent = new Intent(MainActivity.this, UsuarioActivity.class);
                     startActivity(intent);
                     finish();
+                }else{
+                    //caso contrario si la sesión no esta iniciada
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    // arreglo de la cantidad de animaciones que hará .
+                    Pair[] pairs = new Pair[2];
+                    pairs[0] = new Pair<View, String>(logoImageView, "logoImageTransition");
+                    pairs[1]  = new Pair<View, String>(DevAndMasterTxt, "textTransition");
+
+                    //verificar la version. buscada en internet
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
+                        startActivity(intent, options.toBundle());
+                    }else{
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             }
         }, 4000);
