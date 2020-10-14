@@ -15,6 +15,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -44,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 //Verificación de usuario al iniciar la aplicación
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if (user != null) {
+                //Verificación de usuario al iniciar con la cuenta de google
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(MainActivity.this);
+
+                if (user != null && account != null) {
                     Intent intent = new Intent(MainActivity.this, UsuarioActivity.class);
                     startActivity(intent);
                     finish();

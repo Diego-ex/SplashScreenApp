@@ -137,7 +137,7 @@ public class RegistroActivity extends AppCompatActivity {
         pairs[5] = new Pair<View, String>(btnInicioSesion, "btnRegistroTrans");
         pairs[6] = new Pair<View, String>(nuevoUsuario, "newUserTrans");
 
-        //verificar la version. buscada en internet
+        //verificar la version. buscada en internet || BORRADA NO FUNCIONÓ
             startActivity(intent);
             finish();
 
